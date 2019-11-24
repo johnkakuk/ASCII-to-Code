@@ -7,13 +7,18 @@ namespace ASCII_to_Code
     public class Settings
     {
         // Member variables
-        string mActiveLanguage;
-        string mActiveBorders;
-        string mActiveAlign;
+        int mActiveLanguage;
+        int mActiveBorders;
+        int mActiveAlign;
         int mCharWidth;
 
+        // Display variables
+        string mActiveLanguageDisplay;
+        string mActiveBordersDisplay;
+        string mActiveAlignDisplay;
+
         // Constructors (Assigns titles to the list items)
-        public Settings(string _ActiveLanguage, string _ActiveBorders, string _ActiveAlign, int _CharWidth)
+        public Settings(int _ActiveLanguage, int _ActiveBorders, int _ActiveAlign, int _CharWidth)
         {
             mActiveLanguage = _ActiveLanguage;
             mActiveBorders = _ActiveBorders;
@@ -22,17 +27,17 @@ namespace ASCII_to_Code
         }
 
         // Getters (Used to get the titles of the list items passed into the methods)
-        public string GetLanguage()
+        public int GetLanguage()
         {
             return mActiveLanguage;
         }
 
-        public string GetBorders()
+        public int GetBorders()
         {
             return mActiveBorders;
         }
 
-        public string GetAlign()
+        public int GetAlign()
         {
             return mActiveAlign;
         }
@@ -42,72 +47,97 @@ namespace ASCII_to_Code
             return mCharWidth;
         }
 
+
+        // Display Getters
+        public string DisplayLanguage()
+        {
+            return mActiveLanguageDisplay;
+        }
+
+        public string DisplayBorders()
+        {
+            return mActiveBordersDisplay;
+        }
+
+        public string DisplayAlign()
+        {
+            return mActiveAlignDisplay;
+        }
+
+
+
         // Setters
         public void SetLanguage(int input)
         {
+            mActiveLanguage = input;
+           
             switch (input)
             {
                 case 1:
-                    mActiveLanguage = "C#";
+                    mActiveLanguageDisplay = "C#";
                     break;
                 case 2:
-                    mActiveLanguage = "C";
+                    mActiveLanguageDisplay = "C";
                     break;
                 case 3:
-                    mActiveLanguage = "C++";
+                    mActiveLanguageDisplay = "C++";
                     break;
                 case 4:
-                    mActiveLanguage = "Java";
+                    mActiveLanguageDisplay = "Java";
                     break;
                 case 5:
-                    mActiveLanguage = "Python";
+                    mActiveLanguageDisplay = "Python";
                     break;
             }
         }
 
         public void SetBorders(int input)
         {
+            mActiveBorders = input;
+
             switch (input)
             {
                 case 1:
-                    mActiveBorders = "None";
+                    mActiveBordersDisplay = "None";
                     break;
                 case 2:
-                    mActiveBorders = "Top Only";
+                    mActiveBordersDisplay = "Top Only";
                     break;
                 case 3:
-                    mActiveBorders = "Bottom Only";
+                    mActiveBordersDisplay = "Bottom Only";
                     break;
                 case 4:
-                    mActiveBorders = "Left Only";
+                    mActiveBordersDisplay = "Left Only";
                     break;
                 case 5:
-                    mActiveBorders = "Right Only";
+                    mActiveBordersDisplay = "Right Only";
                     break;
                 case 6:
-                    mActiveBorders = "Top and Bottom";
+                    mActiveBordersDisplay = "Top and Bottom";
                     break;
                 case 7:
-                    mActiveBorders = "Left and Right";
+                    mActiveBordersDisplay = "Left and Right";
                     break;
                 case 8:
-                    mActiveBorders = "All";
+                    mActiveBordersDisplay = "All";
                     break;
             }
         }
 
         public void SetAlign(int input)
         {
+            mActiveAlign = input;
+
             switch (input)
             {
                 case 1:
-                    mActiveAlign = "Right";
+                    mActiveAlignDisplay = "Left";
                     break;
                 case 2:
-                    mActiveAlign = "Center";
+                    mActiveAlignDisplay = "Center";
                     break;
                 case 3:
-                    mActiveAlign = "Left";
+                    mActiveAlignDisplay = "Right";
                     break;
             }
         }
