@@ -1,46 +1,102 @@
 ﻿using System;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
+using System.Threading;
 
-namespace ASCIIGenerator
+namespace ASCII_to_Code
 {
 	class Program
 	{
-		static void Main(string[] args)
-		{
-			// Make the window width changeable
-			// Export user input to a list where each list item is one line of characters
-			// Run each list item through the GenerateLine method
-			// Print each list item on screen for copying and pasting
+        static void Main(string[] args)
+        {
+            string menuSelectionString = null;
+            int menuSelection = 0;
+            Settings Settings = null;
 
+            /* Languages:
+             * 1 = C# (default)
+             * 2 = C
+             * 3 = C++
+             * 4 = Java
+             * 5 = Python */
+            Settings.SetLanguage(1);
+            string activeLanguageDisplay = Settings.GetLanguage();
 
-			Console.WriteLine("Enter your string. Type \"done\" on a new line when finished.");
+            /* Text borders:
+             * 1 = None (default)
+             * 2 = Top only
+             * 3 = Bottom only
+             * 4 = Left only
+             * 5 = Right only
+             * 6 = Top and bottom
+             * 7 = Left and right
+             * 8 = All */
+            Settings.SetBorders(1);
+            string activeBordersDisplay = Settings.GetBorders();
 
-			List<string> userInput = new List<string>();
-			List<string> output = new List<string>();
-			string currentLine;
+            /* Alignment:
+             * 1 = Left (default)
+             * 2 = Center
+             * 3 = Right */
+            Settings.SetAlign(1);
+            string activeAlignDisplay = Settings.GetAlign();
 
-			while ((currentLine = Console.ReadLine()) != "done")
-			{
-				// Either you do here something with each line separately or
-				userInput.Add(currentLine);
-			}
+            /* Character width:
+             * */
+            Settings.SetWidth(80);
 
-			Console.Clear();
+        Start:
+            Console.Clear();
+            Console.WriteLine(@"   _   ___  ___ ___ ___   _          ___         _     ");
+            Console.WriteLine(@"  /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___ ");
+            Console.WriteLine(@" / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)");
+            Console.WriteLine(@"/_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|");
+            Console.WriteLine(@"                                                       ");
+            Console.WriteLine("Welcome to the ASCII to Code generator.");
+            Console.WriteLine("\r\nWhat would you like to do?");
+            Console.WriteLine("1. Choose program language [{0}]", activeLanguageDisplay);
+            Console.WriteLine("2. Set text borders: [{0}]", activeBordersDisplay);
+            Console.WriteLine("3. Change alignment: [{0}]", activeAlignDisplay);
+            Console.WriteLine("4. Change character width: [{0}]", Settings.GetWidth());
+            Console.WriteLine("5. Process ASCII text art");
+            Console.WriteLine("\r\n0. Exit");
+            menuSelectionString = Console.ReadLine();
 
-			for (int i = 0; i < userInput.Count; i++)
-			{
-				currentLine = GenerateLine(userInput[i]);
-				output.Add(currentLine);
-				Console.WriteLine(output[i]);
-			}
-		}
+            if (Validate.Menu(menuSelectionString, 5))
+            {
+                menuSelection = int.Parse(menuSelectionString);
+            }
+            else
+            {
+                menuSelection = -1;
+            }
 
-		// Generate a line of C# code based on input from the user
-		public static string GenerateLine(string input)
-		{
-			string output = string.Format("Console.WriteLine(@\"{0}\");", input);
-			return output;
-		}
+            switch (menuSelection)
+            {
+                case 1:
+                    Console.WriteLine("Option unavailable.");
+                    Thread.Sleep(750);
+                    break;
+                case 2:
+                    Console.WriteLine("Option unavailable.");
+                    Thread.Sleep(750);
+                    break;
+                case 3:
+                    Console.WriteLine("Option unavailable.");
+                    Thread.Sleep(750);
+                    break;
+                case 4:
+                    Console.WriteLine("Option unavailable.");
+                    Thread.Sleep(750);
+                    break;
+                case 5:
+                    Art.Create();
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case -1:
+                    break;
+            }
+            goto Start;
+        }
 	}
 }
