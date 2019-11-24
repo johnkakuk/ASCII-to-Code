@@ -107,13 +107,13 @@ namespace ASCII_to_Code
                     mActiveBordersDisplay = "Bottom Only";
                     break;
                 case 4:
-                    mActiveBordersDisplay = "Left Only";
+                    mActiveBordersDisplay = "Top and Bottom";
                     break;
                 case 5:
-                    mActiveBordersDisplay = "Right Only";
+                    mActiveBordersDisplay = "Left Only";
                     break;
                 case 6:
-                    mActiveBordersDisplay = "Top and Bottom";
+                    mActiveBordersDisplay = "Right Only";
                     break;
                 case 7:
                     mActiveBordersDisplay = "Left and Right";
