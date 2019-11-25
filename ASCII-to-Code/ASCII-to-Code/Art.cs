@@ -77,7 +77,6 @@ namespace ASCII_to_Code
             {
                 currentLine = GenerateCode(topBorder, Config);
                 Output.Add(currentLine);
-                topBorderToggle = false;
             }
 
             // FOR each list item of user input,

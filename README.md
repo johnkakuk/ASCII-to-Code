@@ -27,12 +27,25 @@ Console.WriteLine(@"              / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ 
 Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|            ");
 Console.WriteLine(@"                                                                                ");
 ```
+### Options
+Available options include:
+
+ * Support for different programming languages
+> * C#
+> * C (Pending testing)
+> * C++ (Pending testing)
+> * Java (Pending testing)
+> * Python (Pending testing)
+
+ * Text borders (top, bottom or both)
+ * Custom text border pattern (single character or two-character patterns)
+ * Text alignment (left, center, right)
+ * Custom character width (default 80)
+
 <br><br><br>
 ## Files
 ### ASCIIGenerator
 Current C# source files for the program.
-> * Challenges: Contains specs for different aspects of the main challenge program. 
-> * Research: Contains various assets compiled and reports produced for this class.
 
 ### Docs
-> * Contains reference material for development.
+ * Contains reference material for development.

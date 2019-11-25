@@ -14,17 +14,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/john/Projects/GitHub/ascii-to-code/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code.csproj",
+      "projectUniqueName": "/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code.csproj",
       "projectName": "ASCII-to-Code",
-      "projectPath": "/Users/john/Projects/GitHub/ascii-to-code/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code.csproj",
+      "projectPath": "/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code.csproj",
       "packagesPath": "/Users/john/.nuget/packages/",
-      "outputPath": "/Users/john/Projects/GitHub/ascii-to-code/ASCII-to-Code/ASCII-to-Code/obj/",
+      "outputPath": "/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/john/.config/NuGet/NuGet.Config"
+        "/Users/john/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
