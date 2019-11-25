@@ -10,7 +10,9 @@ namespace ASCII_to_Code
         {
             if (string.IsNullOrWhiteSpace(input))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid entry. Please try again.");
+                Console.ResetColor();
                 Thread.Sleep(750);
                 return false;
             }
@@ -30,7 +32,9 @@ namespace ASCII_to_Code
 
             if (string.IsNullOrWhiteSpace(input) || (!int.TryParse(input, out output)) || output < 0 || output > maximum)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid selection. Please try again.");
+                Console.ResetColor();
                 Thread.Sleep(750);
                 return false;
             }
@@ -50,7 +54,9 @@ namespace ASCII_to_Code
 
             if (string.IsNullOrWhiteSpace(input) || (!int.TryParse(input, out output)))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid entry. Please try again.");
+                Console.ResetColor();
                 Thread.Sleep(750);
                 return false;
             }
@@ -70,7 +76,9 @@ namespace ASCII_to_Code
 
             if (string.IsNullOrWhiteSpace(input) || (!double.TryParse(input, out output)))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid entry. Please try again.");
+                Console.ResetColor();
                 Thread.Sleep(750);
                 return false;
             }
@@ -90,7 +98,9 @@ namespace ASCII_to_Code
 
             if (string.IsNullOrWhiteSpace(input) || (!float.TryParse(input, out output)))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Invalid entry. Please try again.");
+                Console.ResetColor();
                 Thread.Sleep(750);
                 return false;
             }

@@ -71,6 +71,17 @@ namespace ASCII_to_Code
             return mActiveAlignDisplay;
         }
 
+        public string DisplayBorderType()
+        {
+            string output = mBorderType;
+
+            while (output.Length < 3)
+            {
+                output = string.Format("{0}{1}", output, mBorderType);
+            }
+
+            return output.Substring(0, 3);
+        }
 
 
         // Setters

@@ -7,20 +7,40 @@ namespace ASCII_to_Code
     {
         public static void Create(Settings Config)
         {
+            // Setup
+            bool topBorderToggle = false;
+            bool bottomBorderToggle = false;
+            string topBorder = null;
+            string bottomBorder = null;
+            List<string> UserInput = new List<string>();
+            List<string> Output = new List<string>();
+            string currentLine;
+
+            // Print borders if applicable
+            if ((Config.GetBorders() == 2) || (Config.GetBorders() == 4))
+            {
+                topBorder = BuildBorder(Config.GetBorderType(), Config.GetWidth());
+                topBorderToggle = true;
+            }
+            if ((Config.GetBorders() == 3) || (Config.GetBorders() == 4))
+            {
+                bottomBorder = BuildBorder(Config.GetBorderType(), Config.GetWidth());
+                bottomBorderToggle = true;
+            }
+
         Start:
             Console.Clear();
-            Console.WriteLine(@"   _   ___  ___ ___ ___   _          ___         _     ");
-            Console.WriteLine(@"  /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___ ");
-            Console.WriteLine(@" / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)");
-            Console.WriteLine(@"/_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|");
-            Console.WriteLine(@"                                                       ");
+            Console.WriteLine(@"################################################################################");
+            Console.WriteLine(@"                _   ___  ___ ___ ___   _          ___         _                 ");
+            Console.WriteLine(@"               /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___             ");
+            Console.WriteLine(@"              / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)            ");
+            Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|            ");
+            Console.WriteLine(@"                                                                                ");
+            Console.WriteLine(@"################################################################################");
             Console.WriteLine("Paste your ASCII art. Type \"done\" on a newline when finished.");
             Console.WriteLine("Type \"clear\" on a newline to start over.");
             Console.WriteLine("Type \"exit\" on a newline to return to the main menu.");
 
-            List<string> UserInput = new List<string>();
-            List<string> Output = new List<string>();
-            string currentLine;
 
         Capture:
             // Capture user input, line-by-line, until the user types an escape statement on a new line
@@ -38,6 +58,7 @@ namespace ASCII_to_Code
             switch (currentLine)
             {
                 case "clear":
+                    UserInput.Clear();
                     goto Start;
                 case "done":
                     goto Operate;
@@ -50,27 +71,12 @@ namespace ASCII_to_Code
         Operate:
             Console.Clear();
 
-            
-
-            // Border setup
-            bool topBorderToggle = false;
-            bool bottomBorderToggle = false;
-            string topBorder = null;
-            string topBorderSpacer = null;
-            string bottomBorder = null;
-
-
-            // Print borders if applicable
-            if ((Config.GetBorders() == 2) || (Config.GetBorders() == 4))
+            // Add borders to list if applicable
+            if (topBorderToggle == true)
             {
-                topBorder = BuildBorder(Config.GetBorderType(), Config.GetWidth());
-                topBorderSpacer = BuildBorder(" ", Config.GetWidth());
-                topBorderToggle = true;
-            }
-            if ((Config.GetBorders() == 3) || (Config.GetBorders() == 4))
-            {
-                bottomBorder = BuildBorder(Config.GetBorderType(), Config.GetWidth());
-                bottomBorderToggle = true;
+                currentLine = GenerateCode(topBorder, Config);
+                Output.Add(currentLine);
+                topBorderToggle = false;
             }
 
             // FOR each list item of user input,
@@ -79,15 +85,6 @@ namespace ASCII_to_Code
             // PLACE the new code INTO the new output item.
             for (int i = 0; i < UserInput.Count; i++)
             {
-                if (topBorderToggle == true)
-                {
-                    currentLine = GenerateCode(topBorder, Config);
-                    Output.Add(currentLine);
-                    currentLine = GenerateCode(topBorderSpacer, Config);
-                    Output.Add(currentLine);
-                    topBorderToggle = false;
-                    continue;
-                }
                 currentLine = GenerateCode(UserInput[i], Config);
                 Output.Add(currentLine);
             }
@@ -99,14 +96,11 @@ namespace ASCII_to_Code
             }
 
 
+            // Print final results
             for (int i = 0; i < Output.Count; i++)
             {
                 Console.WriteLine(Output[i]);
             }
-
-
-            
-
 
             Console.WriteLine("\r\nPress enter to continue...");
             Console.ReadLine();
@@ -120,6 +114,30 @@ namespace ASCII_to_Code
         {
             string output = null;
 
+            // Apply the alignment
+            switch (Config.GetAlign())
+            {
+                case 1: // Align Left
+                    while (input.Length < Config.GetWidth())
+                    {
+                        input = string.Format("{0}{1}", input, " ");
+                    }
+                    break;
+                case 2: // Align Center
+                    while (input.Length < Config.GetWidth())
+                    {
+                        input = string.Format("{0}{1}{2}", " ", input, " ");
+                    }
+                    break;
+                case 3: // Align Right
+                    while (input.Length < Config.GetWidth())
+                    {
+                        input = string.Format("{0}{1}", " ", input);
+                    }
+                    break;
+            }
+
+            // Apply the Code
             switch (Config.GetLanguage())
             {
                 case 1:
