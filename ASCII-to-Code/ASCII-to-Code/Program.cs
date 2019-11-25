@@ -9,11 +9,12 @@ namespace ASCII_to_Code
         {
             string menuSelectionString = null;
             int menuSelection = 0;
-            Settings Config = new Settings(0, 0, 0, 0);
-            Config.SetLanguage(1);
-            Config.SetBorders(1);
+            Settings Config = new Settings(0, 0, null, 0, 0);
             Config.SetAlign(1);
+            Config.SetBorders(1);
+            Config.SetLanguage(1);
             Config.SetWidth(80);
+            Config.SetBorderType("###");
 
         /* Languages:
          * 1 = C# (default)
@@ -49,9 +50,10 @@ namespace ASCII_to_Code
             Console.WriteLine("\r\nWhat would you like to do?");
             Console.WriteLine("1. Choose program language    [{0}]", Config.DisplayLanguage());
             Console.WriteLine("2. Set text borders:          [{0}]", Config.DisplayBorders());
-            Console.WriteLine("3. Change alignment:          [{0}]", Config.DisplayAlign());
-            //Console.WriteLine("4. Change character width:    [{0} characters]", Config.GetWidth());
-            Console.WriteLine("4. Process ASCII text art");
+            Console.WriteLine("3. Change border style:       [{0}]", Config.GetBorderType());
+            Console.WriteLine("4. Change alignment:          [{0}]", Config.DisplayAlign());
+            //Console.WriteLine("5. Change character width:    [{0} characters]", Config.GetWidth());
+            Console.WriteLine("5. Process ASCII text art");
             Console.WriteLine("\r\n0. Exit");
             menuSelectionString = Console.ReadLine();
 
@@ -78,7 +80,7 @@ namespace ASCII_to_Code
                     Console.WriteLine("Borders set to {0}.", Config.DisplayBorders());
                     Thread.Sleep(750);
                     break;
-                case 3:
+                case 4:
                     int align = SetAlign();
                     Config.SetAlign(align);
                     Console.WriteLine("Alignment set to align {0}.", Config.DisplayAlign());
@@ -90,8 +92,13 @@ namespace ASCII_to_Code
                     Console.WriteLine("Character width set to {0} characters.", Config.GetWidth());
                     Thread.Sleep(750);
                     break;*/
-                case 4:
-                    Art.Create();
+                case 3:
+                    string border = SetBorderType();
+                    Config.SetBorderType(border);
+                    Console.WriteLine("Borders will now look like: {0}", Config.GetBorderType());
+                    break;
+                case 5:
+                    Art.Create(Config);
                     break;
                 case 0:
                     Environment.Exit(0);
@@ -216,8 +223,51 @@ namespace ASCII_to_Code
                     inputIsBad = false;
                 }
             }
-
             return userSelection;
         }
-	}
+
+        public static string SetBorderType()
+        {
+            bool inputIsBad = true;
+            string userInput = null;
+
+            while (inputIsBad)
+            {
+                Console.Clear();
+                Console.WriteLine("Enter a one or two character border (will repeat):");
+
+                userInput = Console.ReadLine();
+                if (userInput.Length > 2)
+                {
+                    Console.WriteLine("Invalid entry. Please try again.");
+                    Thread.Sleep(750);
+                }
+                else
+                {
+                    inputIsBad = false;
+                }
+            }
+
+            string output = "";
+
+            while (output.Length < 3)
+            {
+                output = string.Format("{0}{1}", output, userInput);
+            }
+
+            output = Truncate(output, 3);
+
+            return output;
+        }
+
+        public static string Truncate(string input, int maxLength)
+        {
+            if (!string.IsNullOrEmpty(input) && input.Length > maxLength)
+            {
+                return input.Substring(0, maxLength);
+            }
+
+            return input;
+        }
+    }
 }

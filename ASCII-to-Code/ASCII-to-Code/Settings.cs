@@ -9,6 +9,7 @@ namespace ASCII_to_Code
         // Member variables
         int mActiveLanguage;
         int mActiveBorders;
+        string mBorderType;
         int mActiveAlign;
         int mCharWidth;
 
@@ -18,10 +19,11 @@ namespace ASCII_to_Code
         string mActiveAlignDisplay;
 
         // Constructors (Assigns titles to the list items)
-        public Settings(int _ActiveLanguage, int _ActiveBorders, int _ActiveAlign, int _CharWidth)
+        public Settings(int _ActiveLanguage, int _ActiveBorders, string _BorderType, int _ActiveAlign, int _CharWidth)
         {
             mActiveLanguage = _ActiveLanguage;
             mActiveBorders = _ActiveBorders;
+            mBorderType = _BorderType;
             mActiveAlign = _ActiveAlign;
             mCharWidth = _CharWidth;
         }
@@ -35,6 +37,11 @@ namespace ASCII_to_Code
         public int GetBorders()
         {
             return mActiveBorders;
+        }
+
+        public string GetBorderType()
+        {
+            return mBorderType;
         }
 
         public int GetAlign()
@@ -123,6 +130,13 @@ namespace ASCII_to_Code
                     break;
             }
         }
+
+
+        public void SetBorderType(string input)
+        {
+            mBorderType = input;
+        }
+
 
         public void SetAlign(int input)
         {
