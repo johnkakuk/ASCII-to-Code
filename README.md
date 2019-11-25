@@ -19,7 +19,7 @@ This program is a small utility that allows the user to paste ASCII text art (or
  
  done
 ```
-Becomes:<br><br>
+Becomes:<br>
 ```
 Console.WriteLine(@"    _   ___  ___ ___ ___   _          ___         _     ");
 Console.WriteLine(@"   /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___ ");
