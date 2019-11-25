@@ -29,6 +29,8 @@ namespace ASCII_to_Code
             }
 
         Start:
+            UserInput.Clear();
+            Output.Clear();
             Console.Clear();
             Console.WriteLine(@"################################################################################");
             Console.WriteLine(@"                _   ___  ___ ___ ___   _          ___         _                 ");
@@ -58,7 +60,6 @@ namespace ASCII_to_Code
             switch (currentLine)
             {
                 case "clear":
-                    UserInput.Clear();
                     goto Start;
                 case "done":
                     goto Operate;
@@ -102,8 +103,8 @@ namespace ASCII_to_Code
                 Console.WriteLine(Output[i]);
             }
 
-            Console.WriteLine("\r\nPress enter to continue...");
-            Console.ReadLine();
+            Console.WriteLine("\r\nPress any key to continue...");
+            Console.ReadKey();
             goto Start;
 
         End:;
