@@ -24,8 +24,9 @@ Becomes:<br>
 Console.WriteLine(@"                _   ___  ___ ___ ___   _          ___         _                 ");
 Console.WriteLine(@"               /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___             ");
 Console.WriteLine(@"              / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)            ");
-Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|           ");
-Console.WriteLine(@"                                                                                 ");```
+Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|            ");
+Console.WriteLine(@"                                                                                ");
+```
 <br><br><br>
 ## Files
 ### ASCIIGenerator
