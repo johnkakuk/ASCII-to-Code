@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Windows;
 
 namespace ASCII_to_Code
 {
@@ -9,8 +8,8 @@ namespace ASCII_to_Code
         static void Main(string[] args)
         {
             // Initial declarations
-            string menuSelectionString = null;
-            int menuSelection = 0;
+            string menuSelectionString;
+            int menuSelection;
             Settings Config = new Settings(0, 0, null, 0, 0);
             Config.SetAlign(1);
             Config.SetBorders(1);

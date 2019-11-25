@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Linq;
-
-namespace ASCII_to_Code
+﻿namespace ASCII_to_Code
 {
     public class Settings
     {
