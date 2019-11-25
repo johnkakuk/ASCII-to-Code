@@ -8,6 +8,7 @@ namespace ASCII_to_Code
     {
         static void Main(string[] args)
         {
+            // Initial declarations
             string menuSelectionString = null;
             int menuSelection = 0;
             Settings Config = new Settings(0, 0, null, 0, 0);
@@ -17,39 +18,17 @@ namespace ASCII_to_Code
             Config.SetWidth(80);
             Config.SetBorderType("###");
 
-        /* Languages:
-         * 1 = C# (default)
-         * 2 = C
-         * 3 = C++
-         * 4 = Java
-         * 5 = Python */
-
-        /* Text borders:
-         * 1 = None (default)
-         * 2 = Top only
-         * 3 = Bottom only
-         * 4 = Left only
-         * 5 = Right only
-         * 6 = Top and bottom
-         * 7 = Left and right
-         * 8 = All */
-
-        /* Alignment:
-         * 1 = Left (default)
-         * 2 = Center
-         * 3 = Right */
-
-
         Start:
             PrintTitle();
             Console.WriteLine("Welcome to the ASCII to Code generator.");
             Console.WriteLine("What would you like to do?");
-            Console.WriteLine("\r\n1. Choose program language    [{0}]", Config.DisplayLanguage());
-            Console.WriteLine("2. Set text borders:          [{0}]", Config.DisplayBorders());
-            Console.WriteLine("3. Change border style:       [{0}]", Config.DisplayBorderType());
-            Console.WriteLine("4. Change alignment:          [{0}]", Config.DisplayAlign());
-            Console.WriteLine("5. Change character width:    [{0} characters]", Config.GetWidth());
-            Console.WriteLine("6. Process ASCII text art");
+            Console.WriteLine("\r\n1. Process ASCII text art");
+            Console.WriteLine("\r\nSETTINGS:");
+            Console.WriteLine("2. Choose program language:   [{0}]", Config.DisplayLanguage());
+            Console.WriteLine("3. Set text borders:          [{0}]", Config.DisplayBorders());
+            Console.WriteLine("4. Change border style:       [{0}]", Config.DisplayBorderType());
+            Console.WriteLine("5. Change alignment:          [{0}]", Config.DisplayAlign());
+            Console.WriteLine("6. Change character width:    [{0} characters]", Config.GetWidth());
             Console.WriteLine("\r\n0. Exit");
             menuSelectionString = Console.ReadLine();
 
@@ -65,6 +44,9 @@ namespace ASCII_to_Code
             switch (menuSelection)
             {
                 case 1:
+                    Art.Create(Config);
+                    break;
+                case 2:
                     int language = SetLanguage();
                     Config.SetLanguage(language);
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -72,7 +54,7 @@ namespace ASCII_to_Code
                     Console.ResetColor();
                     Thread.Sleep(750);
                     break;
-                case 2:
+                case 3:
                     int borders = SetBorders();
                     Config.SetBorders(borders);
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -80,7 +62,7 @@ namespace ASCII_to_Code
                     Console.ResetColor();
                     Thread.Sleep(750);
                     break;
-                case 3:
+                case 4:
                     string border = SetBorderType();
                     Config.SetBorderType(border);
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -88,7 +70,7 @@ namespace ASCII_to_Code
                     Console.ResetColor();
                     Thread.Sleep(750);
                     break;
-                case 4:
+                case 5:
                     int align = SetAlign();
                     Config.SetAlign(align);
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -96,16 +78,13 @@ namespace ASCII_to_Code
                     Console.ResetColor();
                     Thread.Sleep(750);
                     break;
-                case 5:
+                case 6:
                     int width = SetWidth();
                     Config.SetWidth(width);
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("Character width set to {0} characters.", Config.GetWidth());
                     Console.ResetColor();
                     Thread.Sleep(750);
-                    break;
-                case 6:
-                    Art.Create(Config);
                     break;
                 case 0:
                     Environment.Exit(0);
