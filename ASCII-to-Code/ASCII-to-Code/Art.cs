@@ -12,9 +12,9 @@ namespace ASCII_to_Code
             bool bottomBorderToggle = false;
             string topBorder = null;
             string bottomBorder = null;
-            List<string> UserInput = new List<string>();
-            List<string> Output = new List<string>();
             string currentLine;
+            List<string> UserInput = new List<string>();
+            List<string> Output = new List<string>(); 
 
             // Print borders if applicable
             if ((Config.GetBorders() == 2) || (Config.GetBorders() == 4))
@@ -159,6 +159,7 @@ namespace ASCII_to_Code
             return output;
         }
 
+        // Repeat the border pattern until width is surpassed, then cut it
         public static string BuildBorder(string pattern, int width)
         {
             string output = "";
@@ -173,6 +174,7 @@ namespace ASCII_to_Code
             return output;
         }
 
+        // Used to cut a string down to size w/ substrings
         public static string Truncate(string input, int maxLength)
         {
             if (!string.IsNullOrEmpty(input) && input.Length > maxLength)
