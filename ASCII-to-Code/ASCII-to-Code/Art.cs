@@ -123,12 +123,30 @@ namespace ASCII_to_Code
                         input = string.Format("{0}{1}", input, " ");
                     }
                     break;
+
                 case 2: // Align Center
-                    while (input.Length < Config.GetWidth())
+                    // Set up adjust for odd string length
+                    bool oddInput = false;
+                    int adjustedWidth = Config.GetWidth();
+                    if (input.Length % 2 == 1)
+                    {
+                        adjustedWidth = Config.GetWidth() - 2;
+                        oddInput = true;
+                    }
+
+                    // Add spaces to center text
+                    while (input.Length < adjustedWidth)
                     {
                         input = string.Format("{0}{1}{2}", " ", input, " ");
                     }
+
+                    // Correct for missing spaces with odd length lines
+                    if (oddInput)
+                    {
+                        input = string.Format("{0}{1}", input, " ");
+                    }
                     break;
+
                 case 3: // Align Right
                     while (input.Length < Config.GetWidth())
                     {
@@ -136,6 +154,8 @@ namespace ASCII_to_Code
                     }
                     break;
             }
+
+            input.Substring(0, 5);
 
             // Apply the Code
             switch (Config.GetLanguage())
@@ -156,6 +176,8 @@ namespace ASCII_to_Code
                     output = string.Format("print(\"{0}\") **NOT FUNCTIONAL YET**", input);
                     break;
             }
+
+            Console.WriteLine(input.Length);
             return output;
         }
 
