@@ -5,16 +5,45 @@ namespace ASCII_to_Code
 {
     class Art
     {
-        public static void Create(Settings Config)
+        public static List<string> Capture()
         {
-            // Setup
+            // Capture user input, line-by-line, until the user types an escape statement on a new line
+            string currentLine = Console.ReadLine();
+            List<string> UserInput = new List<string>();
+
+            while (currentLine.ToLower() != "clear" && currentLine.ToLower() != "done" && currentLine.ToLower() != "exit")
+            {
+                UserInput.Add(currentLine);
+
+                currentLine = Console.ReadLine();
+            }
+
+            switch (currentLine)
+            {
+                case "clear":
+                    UserInput.Clear();
+                    UserInput.Add("clear");
+                    return UserInput;
+                case "done":
+                    return UserInput;
+                case "exit":
+                    UserInput.Clear();
+                    UserInput.Add("exit");
+                    return UserInput;
+            }
+
+            return UserInput;
+        }
+
+
+        public static void Operate(Settings Config, List<string> UserInput)
+        {
+            List<string> Output = new List<string>();
             bool topBorderToggle = false;
             bool bottomBorderToggle = false;
             string topBorder = null;
             string bottomBorder = null;
             string currentLine;
-            List<string> UserInput = new List<string>();
-            List<string> Output = new List<string>(); 
 
             // Print borders if applicable
             if ((Config.GetBorders() == 2) || (Config.GetBorders() == 4))
@@ -28,48 +57,6 @@ namespace ASCII_to_Code
                 bottomBorderToggle = true;
             }
 
-        Start:
-            UserInput.Clear();
-            Output.Clear();
-            Console.Clear();
-            Console.WriteLine(@"################################################################################");
-            Console.WriteLine(@"                _   ___  ___ ___ ___   _          ___         _                 ");
-            Console.WriteLine(@"               /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___             ");
-            Console.WriteLine(@"              / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)            ");
-            Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|            ");
-            Console.WriteLine(@"                                                                                ");
-            Console.WriteLine(@"################################################################################");
-            Console.WriteLine("Paste your ASCII art. Type \"done\" on a newline when finished.");
-            Console.WriteLine("Type \"clear\" on a newline to start over.");
-            Console.WriteLine("Type \"exit\" on a newline to return to the main menu.");
-
-
-        Capture:
-            // Capture user input, line-by-line, until the user types an escape statement on a new line
-            currentLine = Console.ReadLine();
-            if
-                (
-                currentLine != "clear" &&               // Escape statements:   Clear (start over)
-                currentLine != "done" &&                //                      Done (process into code)
-                currentLine != "exit"                   //                      Exit (return to Main())
-                )
-            {
-                UserInput.Add(currentLine);
-            }
-
-            switch (currentLine)
-            {
-                case "clear":
-                    goto Start;
-                case "done":
-                    goto Operate;
-                case "exit":
-                    goto End;
-            }
-
-            goto Capture;
-
-        Operate:
             Console.Clear();
 
             // Add borders to list if applicable
@@ -104,10 +91,47 @@ namespace ASCII_to_Code
 
             Console.WriteLine("\r\nPress any key to continue...");
             Console.ReadKey();
-            goto Start;
-
-        End:;
         }
+
+
+
+
+        public static void Create(Settings Config)
+        {
+            // Setup
+            List<string> UserInput = new List<string>();
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine(@"################################################################################");
+                Console.WriteLine(@"                _   ___  ___ ___ ___   _          ___         _                 ");
+                Console.WriteLine(@"               /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___             ");
+                Console.WriteLine(@"              / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)            ");
+                Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|            ");
+                Console.WriteLine(@"                                                                                ");
+                Console.WriteLine(@"################################################################################");
+                Console.WriteLine("Paste your ASCII art. Type \"done\" on a newline when finished.");
+                Console.WriteLine("Type \"clear\" on a newline to start over.");
+                Console.WriteLine("Type \"exit\" on a newline to return to the main menu.");
+
+                UserInput = Capture();
+
+                if (UserInput[0] == "exit")
+                {
+                    return;
+                } else if (UserInput[0] == "clear")
+                {
+                    UserInput.Clear();
+                    continue;
+                }
+
+                Operate(Config, UserInput);
+
+            }
+        }
+
+
 
         // Generate a line of C# code based on input from the user
         public static string GenerateCode(string input, Settings Config)
@@ -164,7 +188,7 @@ namespace ASCII_to_Code
                     output = string.Format("Console.WriteLine(@\"{0}\");", input);
                     break;
                 case 2:
-                    output = string.Format("printf(\"{0}\"); *NOT FUNCTIONAL YET*", input);
+                    output = string.Format("printf(\"{0}\"); **NOT FUNCTIONAL YET**", input);
                     break;
                 case 3:
                     output = string.Format("cout << \"{0}\"; **NOT FUNCTIONAL YET*", input);
@@ -177,7 +201,6 @@ namespace ASCII_to_Code
                     break;
             }
 
-            Console.WriteLine(input.Length);
             return output;
         }
 

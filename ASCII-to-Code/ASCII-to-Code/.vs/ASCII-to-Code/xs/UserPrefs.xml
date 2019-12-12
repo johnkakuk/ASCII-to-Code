@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{2BAA2281-90B0-450D-9BE0-6C640AA63D8E}|Default">
   <MonoDevelop.Ide.ItemProperties.ASCII-to-Code PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Art.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Art.cs" Line="79" Column="41" />
+      <File FileName="Art.cs" Line="79" Column="40" />
+      <File FileName="Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +11,7 @@
           <Node name="ASCII-to-Code" expanded="True">
             <Node name="ASCII-to-Code" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Art.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
