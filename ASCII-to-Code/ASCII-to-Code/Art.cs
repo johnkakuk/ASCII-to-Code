@@ -5,6 +5,44 @@ namespace ASCII_to_Code
 {
     class Art
     {
+        public static void Create(Settings Config)
+        {
+            // Setup
+            List<string> UserInput = new List<string>();
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine(@"################################################################################");
+                Console.WriteLine(@"                _   ___  ___ ___ ___   _          ___         _                 ");
+                Console.WriteLine(@"               /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___             ");
+                Console.WriteLine(@"              / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)            ");
+                Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|            ");
+                Console.WriteLine(@"                                                                                ");
+                Console.WriteLine(@"################################################################################");
+                Console.WriteLine("Paste your ASCII art. Type \"done\" on a newline when finished.");
+                Console.WriteLine("Type \"clear\" on a newline to start over.");
+                Console.WriteLine("Type \"exit\" on a newline to return to the main menu.");
+
+                UserInput = Capture();
+
+                if (UserInput[0] == "exit")
+                {
+                    return;
+                } else if (UserInput[0] == "clear")
+                {
+                    UserInput.Clear();
+                    continue;
+                }
+
+                Operate(Config, UserInput);
+
+            }
+        }
+
+
+
+
         public static List<string> Capture()
         {
             // Capture user input, line-by-line, until the user types an escape statement on a new line
@@ -34,6 +72,8 @@ namespace ASCII_to_Code
 
             return UserInput;
         }
+
+
 
 
         public static void Operate(Settings Config, List<string> UserInput)
@@ -93,43 +133,6 @@ namespace ASCII_to_Code
             Console.ReadKey();
         }
 
-
-
-
-        public static void Create(Settings Config)
-        {
-            // Setup
-            List<string> UserInput = new List<string>();
-
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine(@"################################################################################");
-                Console.WriteLine(@"                _   ___  ___ ___ ___   _          ___         _                 ");
-                Console.WriteLine(@"               /_\ / __|/ __|_ _|_ _| | |_ ___   / __|___  __| |___             ");
-                Console.WriteLine(@"              / _ \\__ \ (__ | | | |  |  _/ _ \ | (__/ _ \/ _` / -_)            ");
-                Console.WriteLine(@"             /_/ \_\___/\___|___|___|  \__\___/  \___\___/\__,_\___|            ");
-                Console.WriteLine(@"                                                                                ");
-                Console.WriteLine(@"################################################################################");
-                Console.WriteLine("Paste your ASCII art. Type \"done\" on a newline when finished.");
-                Console.WriteLine("Type \"clear\" on a newline to start over.");
-                Console.WriteLine("Type \"exit\" on a newline to return to the main menu.");
-
-                UserInput = Capture();
-
-                if (UserInput[0] == "exit")
-                {
-                    return;
-                } else if (UserInput[0] == "clear")
-                {
-                    UserInput.Clear();
-                    continue;
-                }
-
-                Operate(Config, UserInput);
-
-            }
-        }
 
 
 
@@ -203,6 +206,9 @@ namespace ASCII_to_Code
 
             return output;
         }
+
+
+
 
         // Repeat the border pattern until width is surpassed, then cut it
         public static string BuildBorder(string pattern, int width)
