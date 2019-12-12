@@ -1,0 +1,11 @@
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/bin/Release/netcoreapp3.0/ASCII-to-Code
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/bin/Release/netcoreapp3.0/ASCII-to-Code.deps.json
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/bin/Release/netcoreapp3.0/ASCII-to-Code.runtimeconfig.json
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/bin/Release/netcoreapp3.0/ASCII-to-Code.runtimeconfig.dev.json
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/bin/Release/netcoreapp3.0/ASCII-to-Code.dll
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/bin/Release/netcoreapp3.0/ASCII-to-Code.pdb
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/obj/Release/netcoreapp3.0/ASCII-to-Code.csprojAssemblyReference.cache
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/obj/Release/netcoreapp3.0/ASCII-to-Code.AssemblyInfoInputs.cache
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/obj/Release/netcoreapp3.0/ASCII-to-Code.AssemblyInfo.cs
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/obj/Release/netcoreapp3.0/ASCII-to-Code.dll
+/Users/john/Projects/GitHub/ASCII-to-Code/ASCII-to-Code/ASCII-to-Code/obj/Release/netcoreapp3.0/ASCII-to-Code.pdb
